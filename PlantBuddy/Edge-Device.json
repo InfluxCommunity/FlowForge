@@ -1,0 +1,1387 @@
+[
+    {
+        "id": "4a484b157dfb338c",
+        "type": "tab",
+        "label": "Pull data from sensors, send via MQTT to the server",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "82103d314b33985e",
+        "type": "subflow",
+        "name": "Set msg.device to be the device ID",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 120,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "c832ef241714ae57"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 780,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "aeae00f142d9d7e7",
+                        "port": 1
+                    },
+                    {
+                        "id": "7680d61bca40560c",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "1bc2399293fde848",
+        "type": "group",
+        "z": "4a484b157dfb338c",
+        "name": "Moisture",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "f84598104ab88c8f",
+            "7c256be5c756ac0a",
+            "6be0ca222a5dc31a",
+            "ff3bb76268d46bf5",
+            "9ccc469a2e8f5479",
+            "2a55c8efd62602c3",
+            "002e82619ff9eb2e",
+            "e0f341a3aca3f6d9",
+            "4991c2f05b46acbe",
+            "3f3c2019ce781f54"
+        ],
+        "x": 94,
+        "y": 319,
+        "w": 1182,
+        "h": 182
+    },
+    {
+        "id": "37b65436903e3ef9",
+        "type": "group",
+        "z": "4a484b157dfb338c",
+        "name": "Light",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "3e73e12b13e644c0",
+            "4144c1aa0d8ca18d",
+            "8dc5548c0da4e43a",
+            "e38c4e227357287a",
+            "d2d8b4efa79aaff2",
+            "17869ff91d111e94",
+            "c1106639065b0cf1",
+            "c7e584c86048ecf0",
+            "01234bd81760ba67",
+            "09c699e483977fd7"
+        ],
+        "x": 104,
+        "y": 559,
+        "w": 1422,
+        "h": 182
+    },
+    {
+        "id": "01463bc74054274e",
+        "type": "group",
+        "z": "4a484b157dfb338c",
+        "name": "Humidity",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "5932dc0816532f5b",
+            "11bc6d9e462eab49",
+            "f3f111c69aba49ee",
+            "35a0ff253c4d9ea6",
+            "a9f9436a8951a1c2",
+            "ac5cecbab27f0b17",
+            "3e759e1f0dde79d5",
+            "8cb86e16d16d7667",
+            "c7c249e7e5e4e323"
+        ],
+        "x": 94,
+        "y": 1039,
+        "w": 772,
+        "h": 182
+    },
+    {
+        "id": "49daf89a91015b39",
+        "type": "group",
+        "z": "4a484b157dfb338c",
+        "name": "Add device ID to msg",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "890a583c1f5cc001",
+            "aacf761af8d135d7",
+            "aa806408a765b441"
+        ],
+        "x": 94,
+        "y": 219,
+        "w": 442,
+        "h": 82
+    },
+    {
+        "id": "b08f1a5bca4e4e1a",
+        "type": "group",
+        "z": "4a484b157dfb338c",
+        "name": "Trigger",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ea85e696833d11b4",
+            "de0d317cfe6d6f1c",
+            "f55e99ac866d2119",
+            "3d154f9138189af5",
+            "66dcf9cad821e472",
+            "96d20fd0b93d48c6",
+            "45bed62c4d3bdf10",
+            "3f525c06157296b1"
+        ],
+        "x": 94,
+        "y": 39,
+        "w": 912,
+        "h": 162
+    },
+    {
+        "id": "a70256c6ec8c6139",
+        "type": "group",
+        "z": "4a484b157dfb338c",
+        "name": "Temperature",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "cbd7d8a842d2358e",
+            "d5218701ce53bcf1",
+            "af6c3e03cdf21e8b",
+            "4326f1213237c26e",
+            "117fd7d7fb278197",
+            "6491aea8cedfb247",
+            "ef4d34ddfbd96067",
+            "48d67c814e5ae806",
+            "cd5cc8bb99f693c4"
+        ],
+        "x": 94,
+        "y": 799,
+        "w": 772,
+        "h": 182
+    },
+    {
+        "id": "45bed62c4d3bdf10",
+        "type": "junction",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "66dcf9cad821e472",
+                "3f525c06157296b1"
+            ]
+        ]
+    },
+    {
+        "id": "3f525c06157296b1",
+        "type": "junction",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "x": 840,
+        "y": 80,
+        "wires": [
+            [
+                "de0d317cfe6d6f1c"
+            ]
+        ]
+    },
+    {
+        "id": "3f3c2019ce781f54",
+        "type": "junction",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "x": 930,
+        "y": 460,
+        "wires": [
+            [
+                "e0f341a3aca3f6d9"
+            ]
+        ]
+    },
+    {
+        "id": "09c699e483977fd7",
+        "type": "junction",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "x": 1220,
+        "y": 700,
+        "wires": [
+            [
+                "c7e584c86048ecf0"
+            ]
+        ]
+    },
+    {
+        "id": "5c15b953024fb003",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "af449fe14540fe1a",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2317c35f281c2bc9",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "5c15b953024fb003",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c832ef241714ae57",
+        "type": "change",
+        "z": "82103d314b33985e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "msg",
+                "to": "FF_DEVICE_ID",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "aeae00f142d9d7e7"
+            ]
+        ]
+    },
+    {
+        "id": "aeae00f142d9d7e7",
+        "type": "switch",
+        "z": "82103d314b33985e",
+        "name": "No FF_DEVICE_ID found?",
+        "property": "device",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "7680d61bca40560c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7680d61bca40560c",
+        "type": "change",
+        "z": "82103d314b33985e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "msg",
+                "to": "server",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f84598104ab88c8f",
+        "type": "link in",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "link in 1",
+        "links": [
+            "aa806408a765b441"
+        ],
+        "x": 135,
+        "y": 360,
+        "wires": [
+            [
+                "6be0ca222a5dc31a"
+            ]
+        ]
+    },
+    {
+        "id": "7c256be5c756ac0a",
+        "type": "function",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "Convert to percentage",
+        "func": "const voltage = msg.payload[\"/dev/i2c-1\"].ads1115[\"0x48\"].singleEnded.channel_1.Volts;\nconst minVoltage = 1.0;\nconst maxVoltage = 2.0;\n\nlet percentage = (voltage - minVoltage) / (maxVoltage - minVoltage) * 100;\npercentage = Math.max(0, Math.min(percentage, 100));\n\n// Invert the percentage\npercentage = 100 - percentage;\n\nmsg.payload = { percentage: parseFloat(percentage.toFixed(2)) };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 360,
+        "wires": [
+            [
+                "2a55c8efd62602c3"
+            ]
+        ]
+    },
+    {
+        "id": "6be0ca222a5dc31a",
+        "type": "ads1x15_i2c",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "property": "payload",
+        "name": "",
+        "i2c_device_number": 1,
+        "chip": "0x01",
+        "i2c_address": "0x48",
+        "inputsForChannel": "singleEnded",
+        "singleEndedChannel0": true,
+        "singleEndedChannel1": true,
+        "singleEndedChannel2": false,
+        "singleEndedChannel3": false,
+        "differentialChannel0_1": false,
+        "differentialChannel0_3": false,
+        "differentialChannel1_3": false,
+        "differentialChannel2_3": false,
+        "samplesPerSecond0": "128",
+        "samplesPerSecond1": "128",
+        "progGainAmp": "6144",
+        "x": 240,
+        "y": 360,
+        "wires": [
+            [
+                "7c256be5c756ac0a"
+            ]
+        ]
+    },
+    {
+        "id": "3e73e12b13e644c0",
+        "type": "function",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "Light Voltage",
+        "func": "const voltage = msg.payload[\"/dev/i2c-1\"].ads1115[\"0x48\"].singleEnded.channel_0.Volts;\nmsg.payload = { lightIntensityVoltage: parseFloat((voltage - 1.9)) };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 600,
+        "wires": [
+            [
+                "d2d8b4efa79aaff2"
+            ]
+        ]
+    },
+    {
+        "id": "4144c1aa0d8ca18d",
+        "type": "link in",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "link in 2",
+        "links": [
+            "aa806408a765b441"
+        ],
+        "x": 145,
+        "y": 600,
+        "wires": [
+            [
+                "8dc5548c0da4e43a"
+            ]
+        ]
+    },
+    {
+        "id": "8dc5548c0da4e43a",
+        "type": "ads1x15_i2c",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "property": "payload",
+        "name": "",
+        "i2c_device_number": 1,
+        "chip": "0x01",
+        "i2c_address": "0x48",
+        "inputsForChannel": "singleEnded",
+        "singleEndedChannel0": true,
+        "singleEndedChannel1": true,
+        "singleEndedChannel2": false,
+        "singleEndedChannel3": false,
+        "differentialChannel0_1": false,
+        "differentialChannel0_3": false,
+        "differentialChannel1_3": false,
+        "differentialChannel2_3": false,
+        "samplesPerSecond0": "128",
+        "samplesPerSecond1": "128",
+        "progGainAmp": "6144",
+        "x": 250,
+        "y": 600,
+        "wires": [
+            [
+                "3e73e12b13e644c0"
+            ]
+        ]
+    },
+    {
+        "id": "5932dc0816532f5b",
+        "type": "function",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "humidity",
+        "func": "msg.payload = parseFloat(msg.humidity);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1180,
+        "wires": [
+            [
+                "c7c249e7e5e4e323",
+                "8cb86e16d16d7667"
+            ]
+        ]
+    },
+    {
+        "id": "11bc6d9e462eab49",
+        "type": "rpi-dht22",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "",
+        "topic": "rpi-dht22",
+        "dht": "11",
+        "pintype": "0",
+        "pin": "4",
+        "x": 240,
+        "y": 1180,
+        "wires": [
+            [
+                "5932dc0816532f5b"
+            ]
+        ]
+    },
+    {
+        "id": "f3f111c69aba49ee",
+        "type": "link in",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "link in 4",
+        "links": [
+            "aa806408a765b441"
+        ],
+        "x": 145,
+        "y": 1180,
+        "wires": [
+            [
+                "11bc6d9e462eab49"
+            ]
+        ]
+    },
+    {
+        "id": "890a583c1f5cc001",
+        "type": "subflow:82103d314b33985e",
+        "z": "4a484b157dfb338c",
+        "g": "49daf89a91015b39",
+        "name": "",
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "aa806408a765b441"
+            ]
+        ]
+    },
+    {
+        "id": "aacf761af8d135d7",
+        "type": "link in",
+        "z": "4a484b157dfb338c",
+        "g": "49daf89a91015b39",
+        "name": "link in 5",
+        "links": [
+            "de0d317cfe6d6f1c"
+        ],
+        "x": 135,
+        "y": 260,
+        "wires": [
+            [
+                "890a583c1f5cc001"
+            ]
+        ]
+    },
+    {
+        "id": "aa806408a765b441",
+        "type": "link out",
+        "z": "4a484b157dfb338c",
+        "g": "49daf89a91015b39",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "f84598104ab88c8f",
+            "4144c1aa0d8ca18d",
+            "af6c3e03cdf21e8b",
+            "f3f111c69aba49ee"
+        ],
+        "x": 495,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ff3bb76268d46bf5",
+        "type": "project link out",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "moisture",
+        "mode": "link",
+        "broadcast": false,
+        "project": "5278059a-903e-4472-bf45-25bb479da53a",
+        "topic": "moisture",
+        "x": 1170,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e38c4e227357287a",
+        "type": "project link out",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "light",
+        "mode": "link",
+        "broadcast": false,
+        "project": "5278059a-903e-4472-bf45-25bb479da53a",
+        "topic": "light",
+        "x": 1430,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "35a0ff253c4d9ea6",
+        "type": "project link out",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "humidity",
+        "mode": "link",
+        "broadcast": false,
+        "project": "5278059a-903e-4472-bf45-25bb479da53a",
+        "topic": "humidity",
+        "x": 760,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "a9f9436a8951a1c2",
+        "type": "catch",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "",
+        "scope": [
+            "11bc6d9e462eab49"
+        ],
+        "uncaught": false,
+        "x": 170,
+        "y": 1140,
+        "wires": [
+            [
+                "ac5cecbab27f0b17"
+            ]
+        ]
+    },
+    {
+        "id": "ac5cecbab27f0b17",
+        "type": "change",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "error",
+                "pt": "msg",
+                "to": "humidity sensor failed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 1140,
+        "wires": [
+            [
+                "c7c249e7e5e4e323",
+                "3e759e1f0dde79d5"
+            ]
+        ]
+    },
+    {
+        "id": "d2d8b4efa79aaff2",
+        "type": "switch",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "Did the sensor return a valid value?",
+        "property": "payload.lightIntensityVoltage",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "number",
+                "vt": "number"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 640,
+        "y": 600,
+        "wires": [
+            [
+                "01234bd81760ba67",
+                "09c699e483977fd7"
+            ],
+            [
+                "17869ff91d111e94"
+            ]
+        ]
+    },
+    {
+        "id": "17869ff91d111e94",
+        "type": "change",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "error",
+                "pt": "msg",
+                "to": "light sensor failed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 700,
+        "wires": [
+            [
+                "c1106639065b0cf1",
+                "01234bd81760ba67",
+                "09c699e483977fd7"
+            ]
+        ]
+    },
+    {
+        "id": "9ccc469a2e8f5479",
+        "type": "change",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "error",
+                "pt": "msg",
+                "to": "moisture sensor failed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 420,
+        "wires": [
+            [
+                "002e82619ff9eb2e",
+                "4991c2f05b46acbe",
+                "3f3c2019ce781f54"
+            ]
+        ]
+    },
+    {
+        "id": "2a55c8efd62602c3",
+        "type": "switch",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "Did the sensor return a valid value?",
+        "property": "payload.percentage",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "number",
+                "vt": "number"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 690,
+        "y": 360,
+        "wires": [
+            [
+                "4991c2f05b46acbe",
+                "3f3c2019ce781f54"
+            ],
+            [
+                "9ccc469a2e8f5479"
+            ]
+        ]
+    },
+    {
+        "id": "3e759e1f0dde79d5",
+        "type": "debug",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "c1106639065b0cf1",
+        "type": "debug",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "002e82619ff9eb2e",
+        "type": "debug",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8cb86e16d16d7667",
+        "type": "ui_text",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "group": "2317c35f281c2bc9",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Humidity",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 760,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "c7e584c86048ecf0",
+        "type": "ui_text",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "group": "2317c35f281c2bc9",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Light",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1430,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "e0f341a3aca3f6d9",
+        "type": "ui_text",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "group": "2317c35f281c2bc9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Moisture",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1170,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "4991c2f05b46acbe",
+        "type": "switch",
+        "z": "4a484b157dfb338c",
+        "g": "1bc2399293fde848",
+        "name": "msg.debug=true?",
+        "property": "debug",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1000,
+        "y": 360,
+        "wires": [
+            [],
+            [
+                "ff3bb76268d46bf5"
+            ]
+        ]
+    },
+    {
+        "id": "01234bd81760ba67",
+        "type": "switch",
+        "z": "4a484b157dfb338c",
+        "g": "37b65436903e3ef9",
+        "name": "msg.debug=true?",
+        "property": "debug",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1250,
+        "y": 600,
+        "wires": [
+            [],
+            [
+                "e38c4e227357287a"
+            ]
+        ]
+    },
+    {
+        "id": "c7c249e7e5e4e323",
+        "type": "switch",
+        "z": "4a484b157dfb338c",
+        "g": "01463bc74054274e",
+        "name": "msg.debug=true?",
+        "property": "debug",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 1080,
+        "wires": [
+            [],
+            [
+                "35a0ff253c4d9ea6"
+            ]
+        ]
+    },
+    {
+        "id": "ea85e696833d11b4",
+        "type": "inject",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "name": "Trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "96d20fd0b93d48c6"
+            ]
+        ]
+    },
+    {
+        "id": "de0d317cfe6d6f1c",
+        "type": "link out",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "aacf761af8d135d7"
+        ],
+        "x": 945,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f55e99ac866d2119",
+        "type": "project link in",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "name": "project in 1",
+        "project": "all",
+        "broadcast": false,
+        "topic": "trigger",
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "45bed62c4d3bdf10"
+            ]
+        ]
+    },
+    {
+        "id": "3d154f9138189af5",
+        "type": "ui_button",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "name": "Trigger sensors but don't send the data to the server",
+        "group": "2317c35f281c2bc9",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Test sensors locally",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "96d20fd0b93d48c6"
+            ]
+        ]
+    },
+    {
+        "id": "66dcf9cad821e472",
+        "type": "debug",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "96d20fd0b93d48c6",
+        "type": "change",
+        "z": "4a484b157dfb338c",
+        "g": "b08f1a5bca4e4e1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "debug",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 80,
+        "wires": [
+            [
+                "66dcf9cad821e472",
+                "3f525c06157296b1"
+            ]
+        ]
+    },
+    {
+        "id": "cbd7d8a842d2358e",
+        "type": "function",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "temp",
+        "func": "msg.payload = parseFloat(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 940,
+        "wires": [
+            [
+                "48d67c814e5ae806",
+                "cd5cc8bb99f693c4"
+            ]
+        ]
+    },
+    {
+        "id": "d5218701ce53bcf1",
+        "type": "rpi-dht22",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "",
+        "topic": "rpi-dht22",
+        "dht": "11",
+        "pintype": "0",
+        "pin": "4",
+        "x": 240,
+        "y": 940,
+        "wires": [
+            [
+                "cbd7d8a842d2358e"
+            ]
+        ]
+    },
+    {
+        "id": "af6c3e03cdf21e8b",
+        "type": "link in",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "link in 3",
+        "links": [
+            "aa806408a765b441"
+        ],
+        "x": 145,
+        "y": 940,
+        "wires": [
+            [
+                "d5218701ce53bcf1"
+            ]
+        ]
+    },
+    {
+        "id": "4326f1213237c26e",
+        "type": "project link out",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "temperature",
+        "mode": "link",
+        "broadcast": false,
+        "project": "5278059a-903e-4472-bf45-25bb479da53a",
+        "topic": "temperature",
+        "x": 750,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "117fd7d7fb278197",
+        "type": "catch",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "",
+        "scope": [
+            "d5218701ce53bcf1"
+        ],
+        "uncaught": false,
+        "x": 170,
+        "y": 900,
+        "wires": [
+            [
+                "6491aea8cedfb247"
+            ]
+        ]
+    },
+    {
+        "id": "6491aea8cedfb247",
+        "type": "change",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "error",
+                "pt": "msg",
+                "to": "tempeature sensor failed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 900,
+        "wires": [
+            [
+                "ef4d34ddfbd96067",
+                "cd5cc8bb99f693c4"
+            ]
+        ]
+    },
+    {
+        "id": "ef4d34ddfbd96067",
+        "type": "debug",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "48d67c814e5ae806",
+        "type": "ui_text",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "group": "2317c35f281c2bc9",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 750,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "cd5cc8bb99f693c4",
+        "type": "switch",
+        "z": "4a484b157dfb338c",
+        "g": "a70256c6ec8c6139",
+        "name": "msg.debug=true?",
+        "property": "debug",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 840,
+        "wires": [
+            [],
+            [
+                "4326f1213237c26e"
+            ]
+        ]
+    }
+]

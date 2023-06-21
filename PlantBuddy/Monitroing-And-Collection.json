@@ -1,0 +1,773 @@
+[
+    {
+        "id": "6b7cf5fff655e26e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4645485eabaf869e",
+        "type": "group",
+        "z": "6b7cf5fff655e26e",
+        "name": "Request data",
+        "style": {
+            "label": true,
+            "fill": "#dbcbe7"
+        },
+        "nodes": [
+            "79752a3fdb820d07",
+            "b5db31b1d57c2a08",
+            "3adb6bc54a772213"
+        ],
+        "x": 54,
+        "y": 59,
+        "w": 552,
+        "h": 82
+    },
+    {
+        "id": "9c30a3d9fb4ba915",
+        "type": "group",
+        "z": "6b7cf5fff655e26e",
+        "name": "Prep data and write to InfluxDB",
+        "style": {
+            "label": true,
+            "fill": "#bfdbef"
+        },
+        "nodes": [
+            "ee47eb3345133255",
+            "df5d6a98cdb0148d",
+            "cc1af3c5c2c6df51",
+            "5f621796c8bab8a2",
+            "6a6be8f41acf794f",
+            "e34540c3353ca59f",
+            "457dc8b185503b68",
+            "26fd7a993517d37b",
+            "6af176dc5527ebfb",
+            "92612380515f23df",
+            "51d804c416d95699",
+            "7ba921a8e0102ae7",
+            "483912bf1bcf4c37",
+            "b4726c9aadd3bca9",
+            "c1db14b229ea13f0",
+            "70e1dbcba6ef2b0b",
+            "52f829d7257f2e1a",
+            "77699c9c957a1b80",
+            "41edd3aa9403eb22",
+            "0bc190e7b4061821",
+            "f47cf4704a165f57"
+        ],
+        "x": 54,
+        "y": 159,
+        "w": 2472,
+        "h": 262
+    },
+    {
+        "id": "c407a7f81d0cb140",
+        "type": "influxdb",
+        "hostname": "eu-central-1-1.aws.cloud2.influxdata.com",
+        "port": "8086",
+        "protocol": "http",
+        "database": "flowforge",
+        "name": "FlowForge",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://eu-central-1-1.aws.cloud2.influxdata.com",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "79752a3fdb820d07",
+        "type": "inject",
+        "z": "6b7cf5fff655e26e",
+        "g": "4645485eabaf869e",
+        "name": "",
+        "props": [],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "3adb6bc54a772213"
+            ]
+        ]
+    },
+    {
+        "id": "b5db31b1d57c2a08",
+        "type": "project link out",
+        "z": "6b7cf5fff655e26e",
+        "g": "4645485eabaf869e",
+        "name": "project out 1",
+        "mode": "link",
+        "broadcast": false,
+        "project": "324143a5-3487-468c-ac44-2bee588741c4",
+        "topic": "trigger",
+        "x": 510,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ee47eb3345133255",
+        "type": "project link in",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "moisture",
+        "project": "all",
+        "broadcast": false,
+        "topic": "moisture",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "6a6be8f41acf794f"
+            ]
+        ]
+    },
+    {
+        "id": "df5d6a98cdb0148d",
+        "type": "project link in",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "light",
+        "project": "all",
+        "broadcast": false,
+        "topic": "light",
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "6a6be8f41acf794f"
+            ]
+        ]
+    },
+    {
+        "id": "cc1af3c5c2c6df51",
+        "type": "project link in",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "temperature",
+        "project": "all",
+        "broadcast": false,
+        "topic": "temperature",
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "6a6be8f41acf794f"
+            ]
+        ]
+    },
+    {
+        "id": "5f621796c8bab8a2",
+        "type": "project link in",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "humidity",
+        "project": "all",
+        "broadcast": false,
+        "topic": "humidity",
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "6a6be8f41acf794f"
+            ]
+        ]
+    },
+    {
+        "id": "c1ac35fc6a15e708",
+        "type": "comment",
+        "z": "6b7cf5fff655e26e",
+        "name": "p0sByl1hOJr38JYB7QYldG5393b0iooh3vk_jhmmjvNfDrmnAe-8KyBfgonktIpqdMJNbtGXxTg0Kecwf6D5fQ==",
+        "info": "",
+        "x": 1450,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "3adb6bc54a772213",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "4645485eabaf869e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "request-time",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "b5db31b1d57c2a08"
+            ]
+        ]
+    },
+    {
+        "id": "6a6be8f41acf794f",
+        "type": "switch",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "Did the payload come from an edge device?",
+        "property": "device",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "server",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "26fd7a993517d37b",
+                "f47cf4704a165f57"
+            ],
+            [
+                "e34540c3353ca59f"
+            ]
+        ]
+    },
+    {
+        "id": "e34540c3353ca59f",
+        "type": "debug",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "457dc8b185503b68",
+        "type": "debug",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2300,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "26fd7a993517d37b",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "Collate data to send to database",
+        "rules": [
+            {
+                "t": "set",
+                "p": "InfluxDB.value",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "InfluxDB.device",
+                "pt": "msg",
+                "to": "projectLink.deviceId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "InfluxDB.sensor",
+                "pt": "msg",
+                "to": "projectLink.topic",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "InfluxDB.deviceType",
+                "pt": "msg",
+                "to": "projectLink.deviceType",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "InfluxDB.deviceError",
+                "pt": "msg",
+                "to": "error",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "InfluxDB.deviceName",
+                "pt": "msg",
+                "to": "projectLink.deviceName",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "InfluxDB.requestTime",
+                "pt": "msg",
+                "to": "request-time",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "projectLink",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "isValid",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "request-time",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "device",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 260,
+        "wires": [
+            [
+                "77699c9c957a1b80"
+            ]
+        ]
+    },
+    {
+        "id": "6af176dc5527ebfb",
+        "type": "debug",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2300,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "92612380515f23df",
+        "type": "switch",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "Did the sensor error?",
+        "property": "InfluxDB.deviceError",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2120,
+        "y": 260,
+        "wires": [
+            [
+                "6af176dc5527ebfb"
+            ],
+            [
+                "457dc8b185503b68",
+                "52f829d7257f2e1a"
+            ]
+        ]
+    },
+    {
+        "id": "51d804c416d95699",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "Add tags and time",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload[0].time",
+                "pt": "msg",
+                "to": "InfluxDB.requestTime",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload[1].device",
+                "pt": "msg",
+                "to": "InfluxDB.device",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload[1].deviceType",
+                "pt": "msg",
+                "to": "InfluxDB.deviceType",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload[1].deviceName",
+                "pt": "msg",
+                "to": "InfluxDB.deviceName",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 260,
+        "wires": [
+            [
+                "7ba921a8e0102ae7"
+            ]
+        ]
+    },
+    {
+        "id": "7ba921a8e0102ae7",
+        "type": "switch",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "temp, moist, light, humid, other?",
+        "property": "InfluxDB.sensor",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "temperature",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "moisture",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "light",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "humidity",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1590,
+        "y": 260,
+        "wires": [
+            [
+                "483912bf1bcf4c37"
+            ],
+            [
+                "b4726c9aadd3bca9"
+            ],
+            [
+                "c1db14b229ea13f0"
+            ],
+            [
+                "70e1dbcba6ef2b0b"
+            ],
+            [
+                "0bc190e7b4061821"
+            ]
+        ]
+    },
+    {
+        "id": "483912bf1bcf4c37",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload[0].temperature",
+                "pt": "msg",
+                "to": "InfluxDB.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1870,
+        "y": 200,
+        "wires": [
+            [
+                "92612380515f23df"
+            ]
+        ]
+    },
+    {
+        "id": "b4726c9aadd3bca9",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload[0].moisture",
+                "pt": "msg",
+                "to": "InfluxDB.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1860,
+        "y": 240,
+        "wires": [
+            [
+                "92612380515f23df"
+            ]
+        ]
+    },
+    {
+        "id": "c1db14b229ea13f0",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload[0].light",
+                "pt": "msg",
+                "to": "InfluxDB.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1850,
+        "y": 280,
+        "wires": [
+            [
+                "92612380515f23df"
+            ]
+        ]
+    },
+    {
+        "id": "70e1dbcba6ef2b0b",
+        "type": "change",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload[0].humidity",
+                "pt": "msg",
+                "to": "InfluxDB.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1860,
+        "y": 320,
+        "wires": [
+            [
+                "92612380515f23df"
+            ]
+        ]
+    },
+    {
+        "id": "52f829d7257f2e1a",
+        "type": "influxdb out",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "influxdb": "c407a7f81d0cb140",
+        "name": "",
+        "measurement": "sensor_data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "s",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "flowforge",
+        "x": 2370,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "77699c9c957a1b80",
+        "type": "calculator",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "",
+        "inputMsgField": "InfluxDB.requestTime",
+        "outputMsgField": "InfluxDB.requestTime",
+        "operation": "div",
+        "constant": "1000",
+        "round": false,
+        "decimals": 0,
+        "x": 970,
+        "y": 260,
+        "wires": [
+            [
+                "41edd3aa9403eb22"
+            ]
+        ]
+    },
+    {
+        "id": "41edd3aa9403eb22",
+        "type": "calculator",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "",
+        "inputMsgField": "InfluxDB.requestTime",
+        "outputMsgField": "InfluxDB.requestTime",
+        "operation": "rdec",
+        "constant": "0",
+        "round": false,
+        "decimals": 0,
+        "x": 1140,
+        "y": 260,
+        "wires": [
+            [
+                "51d804c416d95699"
+            ]
+        ]
+    },
+    {
+        "id": "0bc190e7b4061821",
+        "type": "debug",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1800,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f47cf4704a165f57",
+        "type": "link out",
+        "z": "6b7cf5fff655e26e",
+        "g": "9c30a3d9fb4ba915",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "7427f3cefbf0e2ed"
+        ],
+        "x": 635,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7427f3cefbf0e2ed",
+        "type": "link in",
+        "z": "6b7cf5fff655e26e",
+        "name": "link in 1",
+        "links": [
+            "f47cf4704a165f57"
+        ],
+        "x": 165,
+        "y": 520,
+        "wires": [
+            [
+                "560cf3907137f34b"
+            ]
+        ]
+    },
+    {
+        "id": "560cf3907137f34b",
+        "type": "debug",
+        "z": "6b7cf5fff655e26e",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 520,
+        "wires": []
+    }
+]

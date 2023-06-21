@@ -1,0 +1,169 @@
+[
+    {
+        "id": "d490c6f9d2252801",
+        "type": "tab",
+        "label": "Tasks",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "eb87319c53c24797",
+        "type": "group",
+        "z": "d490c6f9d2252801",
+        "style": {
+            "stroke": "#b2b3bd",
+            "stroke-opacity": "1",
+            "fill": "#f2f3fb",
+            "fill-opacity": "0.5",
+            "label": true,
+            "label-position": "nw",
+            "color": "#32333b"
+        },
+        "nodes": [
+            "e2e77009be1f743c",
+            "58b991744a959dd5",
+            "9642c1546595e25a",
+            "1d557645bd5d5d81",
+            "bc9dd3c7c0d532aa",
+            "e8250859872c8b4d"
+        ],
+        "x": 34,
+        "y": 339,
+        "w": 1052,
+        "h": 162
+    },
+    {
+        "id": "2a6715197a2ce7aa",
+        "type": "influxdb",
+        "hostname": "eu-central-1-1.aws.cloud2.influxdata.com",
+        "port": "443",
+        "protocol": "http",
+        "database": "flowforge",
+        "name": "InfluxDB Cloud",
+        "usetls": true,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "e2e77009be1f743c",
+        "type": "influxdb in",
+        "z": "d490c6f9d2252801",
+        "g": "eb87319c53c24797",
+        "influxdb": "2a6715197a2ce7aa",
+        "name": "Last Sample",
+        "query": "SELECT LAST(*) FROM \"sensor_data\" WHERE time >= now() - 5m GROUP BY \"deviceName\"",
+        "rawOutput": false,
+        "precision": "n",
+        "retentionPolicy": "",
+        "org": "organisation",
+        "x": 390,
+        "y": 460,
+        "wires": [
+            [
+                "1d557645bd5d5d81"
+            ]
+        ]
+    },
+    {
+        "id": "58b991744a959dd5",
+        "type": "inject",
+        "z": "d490c6f9d2252801",
+        "g": "eb87319c53c24797",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 460,
+        "wires": [
+            [
+                "e2e77009be1f743c"
+            ]
+        ]
+    },
+    {
+        "id": "9642c1546595e25a",
+        "type": "debug",
+        "z": "d490c6f9d2252801",
+        "g": "eb87319c53c24797",
+        "name": "Message Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1d557645bd5d5d81",
+        "type": "function",
+        "z": "d490c6f9d2252801",
+        "g": "eb87319c53c24797",
+        "name": "Check Plant Health",
+        "func": "// Input: msg.payload is an array with the input data\n// Output: msg.payload is an array of arrays, each containing two objects - fields and tags\n\nconst inputData = msg.payload;\n\n// Weights for each factor in percentage\nconst weights = {\n    moisture: 40, // Emphasize on moisture\n    temperature: 40, // Emphasize on temperature\n    light: 10,\n    humidity: 10\n};\n\n// Ideal conditions\nconst ideal = {\n    moisture: 70, // ideal moisture in percentage\n    temperature: 22, // ideal temperature in degree Celsius\n    light: 75, // ideal light in percentage\n    humidity: 50 // ideal humidity in percentage\n};\n\nlet results = [];\n\nfor (let data of inputData) {\n    // Calculate score components\n    let moistureScore = (1 - Math.abs(data.last_moisture - ideal.moisture) / 100) * weights.moisture;\n    let temperatureScore = (1 - Math.abs(data.last_temperature - ideal.temperature) / 30) * weights.temperature;\n    let lightScore = (1 - Math.abs(data.last_light - ideal.light) / 100) * weights.light;\n    let humidityScore = (1 - Math.abs(data.last_humidity - ideal.humidity) / 100) * weights.humidity;\n\n    // Sum up the scores\n    let healthScore = moistureScore + temperatureScore + lightScore + humidityScore;\n\n    // Normalize the score to be between 0 and 100\n    healthScore = Math.max(0, Math.min(healthScore, 100));\n\n    // Determine the health status of the plant\n    let plantStatus;\n    if (healthScore >= 70) {\n        plantStatus = \"healthy\";\n    } else if (healthScore >= 50) {\n        plantStatus = \"ok\";\n    } else {\n        plantStatus = \"unhealthy\";\n    }\n\n    // Add the fields and tags to the results array\n    results.push([{\n        plantHealthScore: parseFloat(healthScore.toFixed(2)),\n        moistureScore: parseFloat(moistureScore.toFixed(2)),\n        temperatureScore: parseFloat(temperatureScore.toFixed(2)),\n        lightScore: parseFloat(lightScore.toFixed(2)),\n        humidityScore: parseFloat(humidityScore.toFixed(2)),\n        time: new Date().getTime(),\n        plantStatus: plantStatus\n    },\n    {\n        deviceName: data.deviceName\n    }]);\n}\n\n// Set the payload to be the array of results\nmsg.payload = results;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "bc9dd3c7c0d532aa",
+                "9642c1546595e25a"
+            ]
+        ]
+    },
+    {
+        "id": "bc9dd3c7c0d532aa",
+        "type": "influxdb out",
+        "z": "d490c6f9d2252801",
+        "g": "eb87319c53c24797",
+        "influxdb": "2a6715197a2ce7aa",
+        "name": "Write Plant Health",
+        "measurement": "plant_health",
+        "precision": "ms",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 950,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "e8250859872c8b4d",
+        "type": "comment",
+        "z": "d490c6f9d2252801",
+        "g": "eb87319c53c24797",
+        "name": "Calculate Plant Health",
+        "info": "# Calculate Plant Health \n\nTask which will select last known values and Calculate Health.",
+        "x": 160,
+        "y": 380,
+        "wires": []
+    }
+]
